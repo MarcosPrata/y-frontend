@@ -61,15 +61,15 @@ const Comment: React.FC<CommentProps> = ({ className, comment }) => {
         <p className="text-paleWhite text-sm mb-4">{comment.body}</p>
         <div className="actions flex items-center space-x-4">
           <div
-            className='flex justify-center itens-center cursor-pointer'
+            className='flex items-center cursor-pointer'
             onClick={handleReplyClick}
           >
             <FiMessageCircle
               size={24}
               className={`${showInput ? "text-accentBlue" : "text-paleWhite"}`}
             />
-            <div className={`${showInput ? "hidden" : "visible"} flex justify-center itens-center ml-1`}>
-              <div className={`text-xs`}>Reply</div>
+            <div className={`${showInput ? "hidden" : "flex"} items-center ml-1`}>
+              <div className="text-xs">Reply</div>
             </div>
           </div>
           <input

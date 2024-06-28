@@ -78,6 +78,28 @@ const PostCardWhite: React.FC<PostCardWhiteProps> = ({ postId, className, onClic
         </p>
       </div>
 
+      <div className='border-t p-3 flex'>
+        <div className="flex w-full border border-gray-300 rounded-full overflow-hidden focus-within:ring-2 focus-within:ring-blue-500">
+          <input
+            type="text"
+            placeholder="Add a comment:"
+            className="w-2/3 text-gray-700 px-5 py-2 focus:outline-none border-none"
+          />
+          <input
+            type="email"
+            placeholder="Email:"
+            className="w-1/3 text-gray-700 px-5 py-2 focus:outline-none border-l border-gray-300"
+          />
+        </div>
+
+        <button
+          onClick={() => { }}
+          className="ml-3 bg-blue-500 text-white text-md font-semibold px-4 py-2 rounded-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+          Comment
+        </button>
+      </div>
+
     </div>
   );
 }
