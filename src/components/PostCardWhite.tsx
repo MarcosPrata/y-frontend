@@ -1,46 +1,10 @@
+import { Post, User } from '@/types';
 import React, { useEffect, useState } from 'react';
 
 interface PostCardWhiteProps {
   className: string
   postId: number;
   onClick?: () => void;
-}
-
-interface Post {
-  id: number;
-  title: string;
-  body: string;
-  username: string;
-}
-
-interface Company {
-  "name": string,
-  "catchPhrase": string,
-  "bs": string
-}
-
-interface Geo {
-  "lat": string,
-  "lng": string,
-}
-
-interface Address {
-  "street": string,
-  "suite": string,
-  "city": string,
-  "zipcode": string,
-  "geo": Geo
-}
-
-interface User {
-  "id": number,
-  "name": string,
-  "username": string,
-  "email": string,
-  "address": Address,
-  "phone": string,
-  "website": string,
-  "company": Company
 }
 
 const PostCardWhite: React.FC<PostCardWhiteProps> = ({ postId, className, onClick }) => {

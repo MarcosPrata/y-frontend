@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { FiSend, FiImage } from 'react-icons/fi';
+import { FiSend } from 'react-icons/fi';
+import { useDispatch } from 'react-redux';
+
+import { addPost, removePostById } from '@/lib/features/posts/posts.slice';
 
 interface NewPostCardProps {
   className?: string | undefined
@@ -8,6 +11,8 @@ interface NewPostCardProps {
 const NewPostCard: React.FC<NewPostCardProps> = ({ className }) => {
   const [title, setTitle] = useState<string>('');
   const [body, setBody] = useState<string>('');
+
+  const dispatch = useDispatch()
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
@@ -18,7 +23,14 @@ const NewPostCard: React.FC<NewPostCardProps> = ({ className }) => {
   };
 
   const handleSubmit = () => {
-    // Submit title to backend
+    // dispatch(removePostById(1))
+    dispatch(addPost({
+      id: 1,
+      body,
+      title,
+      userId: 2,
+      username: "teste"
+    }))
   };
 
 
@@ -41,7 +53,7 @@ const NewPostCard: React.FC<NewPostCardProps> = ({ className }) => {
         <div className="flex items-center space-x-4">
           <input
             type="text"
-            value={title}
+            value={body}
             onChange={handleBodyChange}
             placeholder="The details goes here!"
             className="w-full bg-black text-md mx-4 mb-4 text-gray-200 font-medium placeholder-gray1 focus:outline-none"
