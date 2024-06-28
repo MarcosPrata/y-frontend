@@ -2,9 +2,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { Comment } from '@/types';
 import { CommentState } from './comments.type';
+import { getCommentsAsync } from './comments.thunk';
 
 const initialState: CommentState = {
   comments: [],
+  loading: false,
+  error: null,
 };
 
 const postSlice = createSlice({
@@ -26,6 +29,21 @@ const postSlice = createSlice({
     removeCommentById(state, action: PayloadAction<number>) {
       state.comments = state.comments.filter(post => post.id !== action.payload);
     },
+  },
+  extraReducers: builder => {
+    builder
+      .addCase(getCommentsAsync.pending, state => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(getCommentsAsync.fulfilled, (state, action: PayloadAction<Comment[]>) => {
+        state.comments = action.payload;
+        state.loading = false;
+      })
+      .addCase(getCommentsAsync.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message || 'Failed to fetch posts';
+      });
   },
 });
 

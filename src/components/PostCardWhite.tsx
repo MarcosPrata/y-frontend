@@ -1,5 +1,7 @@
+import { AppDispatch, RootState } from '@/lib/store';
 import { Post, User } from '@/types';
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 interface PostCardWhiteProps {
   className: string
@@ -8,20 +10,8 @@ interface PostCardWhiteProps {
 }
 
 const PostCardWhite: React.FC<PostCardWhiteProps> = ({ postId, className, onClick }) => {
-  const [post, setPost] = useState<Post>();
-  const [user, setUser] = useState<User>();
-
-  useEffect(() => {
-    fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
-      .then(response => response.json())
-      .then(postData => {
-        fetch(`https://jsonplaceholder.typicode.com/users/${postData.userId}`)
-          .then(response => response.json())
-          .then(userData => setUser(userData))
-
-        setPost(postData)
-      })
-  }, [postId]);
+  const post = useSelector((state: RootState) => state.posts.posts.find(it => it.id == postId))
+  const user = useSelector((state: RootState) => state.users.users.find(it => it.id == post?.userId))
 
   return (
     <div

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FiSend } from 'react-icons/fi';
 import { useDispatch } from 'react-redux';
 
-import { addPost, removePostById } from '@/lib/features/posts/posts.slice';
+import { addPost } from '@/lib/features/posts/posts.slice';
 
 interface NewPostCardProps {
   className?: string | undefined
@@ -23,7 +23,6 @@ const NewPostCard: React.FC<NewPostCardProps> = ({ className }) => {
   };
 
   const handleSubmit = () => {
-    // dispatch(removePostById(1))
     dispatch(addPost({
       id: 1,
       body,
@@ -32,7 +31,6 @@ const NewPostCard: React.FC<NewPostCardProps> = ({ className }) => {
       username: "teste"
     }))
   };
-
 
   return (
     <div className={`p-2 border-b border-gray-700 flex ${className}`}>

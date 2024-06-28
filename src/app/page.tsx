@@ -12,19 +12,19 @@ import TrendingTopics from '@/components/TrendingTopics';
 import SearchBar from '@/components/SearchBar';
 import PostCardWhite from '@/components/PostCardWhite';
 import NewPostCard from '@/components/NewPostCard';
-import { fetchPostsAsync } from '@/lib/features/posts/posts.thunk';
+import { getPostsAsync } from '@/lib/features/posts/posts.thunk';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '@/lib/store';
-import { fetchCommentsAsync } from '@/lib/features/comments/comments.thunk';
-import { fetchUsersAsync } from '@/lib/features/users/users.thunk';
+import { getCommentsAsync } from '@/lib/features/comments/comments.thunk';
+import { getUsersAsync } from '@/lib/features/users/users.thunk';
 
 const App: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    dispatch(fetchPostsAsync());
-    dispatch(fetchCommentsAsync());
-    dispatch(fetchUsersAsync());
+    dispatch(getPostsAsync());
+    dispatch(getCommentsAsync());
+    dispatch(getUsersAsync());
   }, [dispatch]);
 
   const [selectedPost, setSelectedPost] = useState<Post | null>(null);

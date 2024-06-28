@@ -15,7 +15,6 @@ const TrendingTopics: React.FC<TrendingTopicsProps> = ({  }) => {
     // Submit reply to backend
   };
 
-
   return (
     <div
       className="max-w-sm border border-gray-700 rounded-xl"

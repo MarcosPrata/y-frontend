@@ -1,9 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { FiSearch, FiX } from "react-icons/fi";
 
-interface SearchBarProps {
-
-}
+interface SearchBarProps {}
 
 const SearchBar: React.FC<SearchBarProps> = ({ }) => {
   const [searchText, setSearchText] = useState<string>('');

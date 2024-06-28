@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
-import { fetchComments } from '@/service/api'
+import { getComments } from '@/service/api'
 
-export const fetchCommentsAsync = createAsyncThunk('comments/fetchComments', async () => {
-  const comments = await fetchComments();
+export const getCommentsAsync = createAsyncThunk('comments/getComments', async () => {
+  const comments = await getComments();
   return comments;
 });

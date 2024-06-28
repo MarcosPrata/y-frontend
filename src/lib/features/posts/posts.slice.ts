@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { Post } from '@/types';
 import { PostState } from './posts.type';
-import { fetchPostsAsync } from './posts.thunk';
+import { getPostsAsync } from './posts.thunk';
 
 const initialState: PostState = {
   posts: [],
@@ -34,15 +34,15 @@ const postSlice = createSlice({
   },
   extraReducers: builder => {
     builder
-      .addCase(fetchPostsAsync.pending, state => {
+      .addCase(getPostsAsync.pending, state => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchPostsAsync.fulfilled, (state, action: PayloadAction<Post[]>) => {
+      .addCase(getPostsAsync.fulfilled, (state, action: PayloadAction<Post[]>) => {
         state.posts = action.payload;
         state.loading = false;
       })
-      .addCase(fetchPostsAsync.rejected, (state, action) => {
+      .addCase(getPostsAsync.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message || 'Failed to fetch posts';
       });
